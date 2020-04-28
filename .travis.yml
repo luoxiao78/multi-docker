@@ -16,10 +16,10 @@ script:
   # - docker run luoxiao78/multi-nginx-test npm run test
 
 after_success:
-  - docker build luoxiao78/multi-client ./client
-  - docker build luoxiao78/multi-server ./server
-  - docker build luoxiao78/multi-worker ./worker
-  - docker build luoxiao78/multi-nginx ./nginx
+  - docker build -t luoxiao78/multi-client ./client
+  - docker build -t luoxiao78/multi-server ./server
+  - docker build -t luoxiao78/multi-worker ./worker
+  - docker build -t luoxiao78/multi-nginx ./nginx
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password_stdin
   - docker push luoxiao78/multi-client
   - docker push luoxiao78/multi-server
